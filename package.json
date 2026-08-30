@@ -1,0 +1,29 @@
+{
+  "name": "app-studiosie7e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "astro dev --host 127.0.0.1 --port 4321",
+    "dev:api": "node --watch src/server/index.js",
+    "build": "astro build",
+    "start": "node src/server/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "lucide": "^1.37.0",
+    "pg": "^8.13.1",
+    "sweetalert2": "^11.26.25"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "^7.2.9",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { mediaUrl } from "../config/media.js";
+---
+<Layout title="Promociones | Studio Siete" description="Promociones vigentes para sesiones y producciones de Studio Siete.">
+  <section class="page-hero" aria-labelledby="promotionsTitle">
+    <img src={mediaUrl("ejemplos/marca.jpg")} alt="Producción visual para promociones de Studio Siete" fetchpriority="high" />
+    <div class="page-hero__shade" aria-hidden="true"></div>
+    <div class="page-hero__content reveal">
+      <p class="kicker">Temporadas y experiencias especiales</p>
+      <h1 id="promotionsTitle">Promociones</h1>
+      <p>Propuestas disponibles por tiempo limitado para crear algo memorable.</p>
+    </div>
+  </section>
+
+  <section class="route-intro section-shell reveal">
+    <p class="section-index">Agenda vigente</p>
+    <div class="route-copy">
+      <h2>El momento indicado para reservar.</h2>
+      <p>Consulta las experiencias de temporada y solicita disponibilidad directamente con el estudio.</p>
+    </div>
+  </section>
+</Layout>

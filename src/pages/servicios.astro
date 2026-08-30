@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { mediaUrl } from "../config/media.js";
+---
+<Layout title="Servicios | Studio Siete" description="Servicios de fotografía, contenido comercial, eventos y alquiler de estudio en Cobán.">
+  <section class="page-hero page-hero--left" aria-labelledby="servicesTitle">
+    <img src={mediaUrl("set/set-01.jpg")} alt="Set fotográfico preparado por Studio Siete" fetchpriority="high" />
+    <div class="page-hero__shade" aria-hidden="true"></div>
+    <div class="page-hero__content reveal">
+      <p class="kicker">Planificación · producción · entrega</p>
+      <h1 id="servicesTitle">Servicios</h1>
+      <p>Soluciones visuales para negocios, celebraciones y proyectos personales.</p>
+    </div>
+  </section>
+
+  <section class="route-intro section-shell reveal">
+    <p class="section-index">Lineas de trabajo</p>
+    <div class="route-copy">
+      <h2>Una producción pensada para tu objetivo.</h2>
+      <p>Contenido para marcas, sesiones personales, cobertura de eventos y alquiler de estudio.</p>
+    </div>
+  </section>
+</Layout>

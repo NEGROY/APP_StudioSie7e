@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { mediaUrl } from "../config/media.js";
+---
+<Layout title="Galería | Studio Siete" description="Retratos, sets, eventos y contenido comercial fotografiados por Studio Siete.">
+  <section class="page-hero" aria-labelledby="galleryTitle">
+    <img src={mediaUrl("modelos/modelo-06.jpg")} alt="Retrato de la galería de Studio Siete" fetchpriority="high" />
+    <div class="page-hero__shade" aria-hidden="true"></div>
+    <div class="page-hero__content reveal">
+      <p class="kicker">Personas · marcas · momentos</p>
+      <h1 id="galleryTitle">Galería</h1>
+      <p>Una selección de historias construidas con luz, dirección y detalle.</p>
+    </div>
+  </section>
+
+  <section class="route-intro section-shell reveal" aria-label="Categorías de galería">
+    <p class="section-index">Archivo visual</p>
+    <div class="route-tags">
+      <span>Modelos</span>
+      <span>Sets</span>
+      <span>Eventos</span>
+      <span>Marcas</span>
+      <span>Productos</span>
+      <span>Sesiones</span>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,110 @@
+---
+import "../styles/public.css";
+import { mediaUrl } from "../config/media.js";
+
+const {
+  title = "Studio Siete | Fotografía profesional en Cobán",
+  description = "Fotografía profesional, producción de contenido y sesiones en Cobán."
+} = Astro.props;
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const navigation = [
+  { href: "/", label: "Inicio" },
+  { href: "/galeria", label: "Galería" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/promociones", label: "Promociones" },
+  { href: "/contacto", label: "Contáctanos" }
+];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href={mediaUrl("ISOTIPO.png")} />
+    <title>{title}</title>
+  </head>
+  <body class="public-page">
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <div class="page-shutter" aria-hidden="true"></div>
+
+    <header class="public-header" data-public-header>
+      <a class="public-brand" href="/" aria-label="Studio Siete, ir al inicio">
+        <img src={mediaUrl("ISOTIPO.png")} alt="" width="48" height="48" />
+        <span>
+          <strong>Studio Siete</strong>
+          <small>Estudio creativo</small>
+        </span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Abrir navegación"
+        aria-expanded="false"
+        aria-controls="publicNavigation"
+        data-nav-toggle
+      >
+        <i class="nav-toggle__open" data-lucide="menu" aria-hidden="true"></i>
+        <i class="nav-toggle__close" data-lucide="x" aria-hidden="true"></i>
+      </button>
+
+      <nav class="public-nav" id="publicNavigation" aria-label="Navegación principal" data-public-nav>
+        {navigation.map((item) => {
+          const itemPath = item.href.replace(/\/$/, "") || "/";
+          const isActive = currentPath === itemPath;
+          return (
+            <a href={item.href} class:list={{ "is-active": isActive }} aria-current={isActive ? "page" : undefined}>
+              {item.label}
+            </a>
+          );
+        })}
+        <a class="nav-access" href="/login" aria-label="Acceder al panel" title="Acceder al panel">
+          <i data-lucide="lock-keyhole" aria-hidden="true"></i>
+          <span>Acceder</span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <slot />
+    </main>
+
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/50257479695"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Reservar por WhatsApp"
+      title="Reservar por WhatsApp"
+    >
+      <i data-lucide="message-circle" aria-hidden="true"></i>
+    </a>
+
+    <footer class="public-footer">
+      <div class="public-footer__brand">
+        <img src={mediaUrl("ISOTIPO.png")} alt="" width="56" height="56" />
+        <div>
+          <strong>Studio Siete</strong>
+          <p>Fotografía profesional y marketing visual en Cobán.</p>
+        </div>
+      </div>
+      <div class="public-footer__contact">
+        <span>6ª avenida 5-80 zona 3, Cobán</span>
+        <a href="tel:+50257479695">+502 5747 9695</a>
+      </div>
+      <div class="public-footer__social" aria-label="Redes sociales">
+        <a href="https://www.instagram.com/studiosie7egt/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+          <i data-lucide="at-sign" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61565059658827" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook">
+          <i data-lucide="share-2" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
+
+    <script src="../scripts/site.js"></script>
+  </body>
+</html>

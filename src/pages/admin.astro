@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Admin | Studio Siete">
+  <main class="admin-shell">
+    <aside class="admin-sidebar">
+      <a class="brand brand--admin" href="/">
+        <img src="/assets/media/ISOTIPO.png" alt="" />
+        <span>Studio Siete</span>
+      </a>
+      <nav id="adminNav" aria-label="Secciones administrativas"></nav>
+      <button class="button button--ghost" id="logoutButton" type="button">Cerrar sesión</button>
+    </aside>
+    <section class="admin-content">
+      <div class="admin-heading">
+        <div>
+          <p class="eyebrow">Panel de administración</p>
+          <h1 id="adminTitle">Servicios</h1>
+        </div>
+        <span id="adminUser">Verificando usuario...</span>
+      </div>
+
+      <form class="admin-form" id="adminForm"></form>
+      <div class="admin-list-tools" id="adminListTools" hidden>
+        <div class="admin-filter-group" id="assignmentFilters" hidden>
+          <label>
+            Buscar asignación
+            <input id="assignmentSearch" type="search" placeholder="Servicio o característica" autocomplete="off" />
+          </label>
+          <label>
+            Ordenar por
+            <select id="assignmentOrder">
+              <option value="servicio">Servicio</option>
+              <option value="caracteristica">Característica</option>
+            </select>
+          </label>
+        </div>
+        <div class="pagination" aria-label="Paginación de registros">
+          <button class="button button--ghost" id="previousPage" type="button">Anterior</button>
+          <span id="pageInfo">Página 1 de 1</span>
+          <button class="button button--ghost" id="nextPage" type="button">Siguiente</button>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead id="adminTableHead"></thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+      </div>
+      <p class="form-message" id="adminMessage" role="status"></p>
+    </section>
+  </main>
+  <script src="../scripts/admin.js"></script>
+</BaseLayout>

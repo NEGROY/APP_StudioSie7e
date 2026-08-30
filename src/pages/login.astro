@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Login | Studio Siete">
+  <main class="auth-page">
+    <section class="auth-panel">
+      <a class="brand brand--auth" href="/">
+        <img src="/assets/media/ISOTIPO.png" alt="" />
+        <span>Studio Siete</span>
+      </a>
+      <h1>Acceso administrativo</h1>
+      <p>Ingresa con tu correo y contraseña para gestionar el contenido.</p>
+      <form class="auth-form" id="loginForm">
+        <label>
+          Correo
+          <input type="email" name="correo" autocomplete="email" required />
+        </label>
+        <label>
+          Contraseña
+          <input type="password" name="password" autocomplete="current-password" required />
+        </label>
+        <button class="button button--primary" type="submit">Ingresar</button>
+        <p class="form-message" id="loginMessage" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <script src="../scripts/login.js"></script>
+</BaseLayout>

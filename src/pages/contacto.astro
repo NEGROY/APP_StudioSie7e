@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { mediaUrl } from "../config/media.js";
+---
+<Layout title="Contáctanos | Studio Siete" description="Reserva una sesión con Studio Siete en Cobán por WhatsApp o redes sociales.">
+  <section class="page-hero page-hero--contact" aria-labelledby="contactTitle">
+    <img src={mediaUrl("set/set-03.jpg")} alt="Ambiente preparado para una sesión en Studio Siete" fetchpriority="high" />
+    <div class="page-hero__shade" aria-hidden="true"></div>
+    <div class="page-hero__content reveal">
+      <p class="kicker">Estamos en Cobán</p>
+      <h1 id="contactTitle">Contáctanos</h1>
+      <p>Conversemos sobre tu sesión, evento o próxima producción visual.</p>
+    </div>
+  </section>
+
+  <section class="route-intro section-shell reveal">
+    <p class="section-index">Visita el estudio</p>
+    <div class="contact-summary">
+      <div>
+        <strong>Dirección</strong>
+        <p>6ª avenida 5-80 zona 3, Cobán, antes del puente Chiú.</p>
+        <span>Parqueo propio</span>
+      </div>
+      <div>
+        <strong>Reservas</strong>
+        <a href="https://wa.me/50257479695" target="_blank" rel="noreferrer">WhatsApp +502 5747 9695</a>
+      </div>
+    </div>
+  </section>
+</Layout>
