@@ -70,6 +70,35 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
+const counterObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const counter = entry.target;
+      const target = Number(counter.dataset.target);
+      if (!Number.isFinite(target) || target <= 0) {
+        observer.unobserve(counter);
+        return;
+      }
+
+      const startTime = performance.now();
+      const duration = 1200;
+      const updateCounter = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        counter.textContent = String(Math.round(target * progress));
+        if (progress < 1) requestAnimationFrame(updateCounter);
+      };
+
+      requestAnimationFrame(updateCounter);
+      observer.unobserve(counter);
+    });
+  },
+  { threshold: 0.65 }
+);
+
+document.querySelectorAll("[data-counter]").forEach((counter) => counterObserver.observe(counter));
+
 document.querySelectorAll("a[href]").forEach((link) => {
   link.addEventListener("click", (event) => {
     if (

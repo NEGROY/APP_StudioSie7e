@@ -1,9 +1,10 @@
 ---
+import { mediaUrl, resolvePublicMediaUrl } from "../config/media.js";
+import { SERVICE_TESTIMONIALS } from "../config/testimonials.js";
 import Layout from "../layouts/Layout.astro";
-import { mediaUrl } from "../config/media.js";
 ---
 <Layout title="Servicios | Studio Siete" description="Servicios de fotografía, contenido comercial, eventos y alquiler de estudio en Cobán.">
-  <section class="page-hero page-hero--left" aria-labelledby="servicesTitle">
+  <section class="page-hero page-hero--left services-hero" aria-labelledby="servicesTitle">
     <img src={mediaUrl("set/set-01.jpg")} alt="Set fotográfico preparado por Studio Siete" fetchpriority="high" />
     <div class="page-hero__shade" aria-hidden="true"></div>
     <div class="page-hero__content reveal">
@@ -13,11 +14,122 @@ import { mediaUrl } from "../config/media.js";
     </div>
   </section>
 
-  <section class="route-intro section-shell reveal">
-    <p class="section-index">Lineas de trabajo</p>
-    <div class="route-copy">
-      <h2>Una producción pensada para tu objetivo.</h2>
-      <p>Contenido para marcas, sesiones personales, cobertura de eventos y alquiler de estudio.</p>
+  <nav class="page-index" aria-label="Secciones de Servicios">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#promociones-servicios">Promociones</a>
+    <a href="#contacto-servicios">Contacto</a>
+  </nav>
+
+  <section class="service-intro section-shell reveal" aria-labelledby="serviceIntroTitle">
+    <p class="section-index">Líneas de trabajo</p>
+    <div>
+      <h2 id="serviceIntroTitle">Una producción pensada para tu objetivo.</h2>
+      <p>Definimos el alcance, preparamos cada detalle y ejecutamos una propuesta visual coherente.</p>
+      <div class="service-lines-public" aria-label="Líneas de servicio">
+        <span>Contenido comercial</span>
+        <span>Sesiones personales</span>
+        <span>Eventos sociales</span>
+        <span>Alquiler de estudio</span>
+      </div>
     </div>
   </section>
+
+  <section class="service-catalog-public" id="catalogo" aria-labelledby="catalogTitle">
+    <div class="section-shell section-heading section-heading--dark reveal">
+      <div>
+        <p class="kicker kicker--blue">Catálogo activo</p>
+        <h2 id="catalogTitle">Elige el punto de partida.</h2>
+      </div>
+      <p class="service-data-status" id="serviceCount" aria-live="polite">Consultando servicios</p>
+    </div>
+    <div class="public-service-grid section-shell" id="publicServiceCatalog" aria-live="polite" aria-busy="true">
+      <div class="public-data-state public-data-state--loading">
+        <span aria-hidden="true"></span>
+        <p>Cargando catálogo...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-process" id="proceso" aria-labelledby="processTitle">
+    <div class="section-shell section-heading reveal">
+      <div>
+        <p class="kicker">Proceso de trabajo</p>
+        <h2 id="processTitle">De la idea a la entrega.</h2>
+      </div>
+      <p class="section-note section-note--light">Tres etapas para trabajar con claridad.</p>
+    </div>
+    <div class="service-process__steps section-shell">
+      <article class="reveal">
+        <span class="service-process__number">01</span>
+        <i data-lucide="message-circle" aria-hidden="true"></i>
+        <h3>Conversamos</h3>
+        <p>Definimos objetivo, estilo, fecha y alcance de la producción.</p>
+      </article>
+      <article class="reveal">
+        <span class="service-process__number">02</span>
+        <i data-lucide="camera" aria-hidden="true"></i>
+        <h3>Producimos</h3>
+        <p>Preparamos set, iluminación y dirección para cada toma.</p>
+      </article>
+      <article class="reveal">
+        <span class="service-process__number">03</span>
+        <i data-lucide="arrow-right" aria-hidden="true"></i>
+        <h3>Entregamos</h3>
+        <p>Seleccionamos y finalizamos el material según lo acordado.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="service-promotions" id="promociones-servicios" aria-labelledby="servicePromotionsTitle">
+    <div class="section-shell section-heading section-heading--dark reveal">
+      <div>
+        <p class="kicker kicker--blue">Promociones vigentes</p>
+        <h2 id="servicePromotionsTitle">Oportunidades para producir ahora.</h2>
+      </div>
+      <a class="text-link text-link--blue" href="/promociones">
+        Ver todas
+        <i data-lucide="arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+    <div class="service-promotion-grid section-shell" id="servicePromotionGrid" aria-live="polite" aria-busy="true">
+      <div class="public-data-state public-data-state--loading">
+        <span aria-hidden="true"></span>
+        <p>Consultando promociones vigentes...</p>
+      </div>
+    </div>
+  </section>
+
+  {SERVICE_TESTIMONIALS.length > 0 && (
+    <section class="service-testimonials" aria-labelledby="testimonialsTitle">
+      <div class="section-shell section-heading section-heading--dark reveal">
+        <div>
+          <p class="kicker kicker--blue">Experiencias</p>
+          <h2 id="testimonialsTitle">Lo que dicen nuestros clientes.</h2>
+        </div>
+      </div>
+      <div class="testimonial-grid section-shell">
+        {SERVICE_TESTIMONIALS.map((testimonial) => (
+          <article class="testimonial-card reveal">
+            <img src={resolvePublicMediaUrl(testimonial.photo)} alt="" loading="lazy" />
+            <blockquote>{testimonial.comment}</blockquote>
+            <strong>{testimonial.name}</strong>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="service-contact-cta" id="contacto-servicios" aria-labelledby="serviceContactTitle">
+    <div class="reveal">
+      <p class="kicker">Hablemos de tu proyecto</p>
+      <h2 id="serviceContactTitle">Cada producción comienza con una conversación.</h2>
+    </div>
+    <a class="action action--gold" href="https://wa.me/50257479695" target="_blank" rel="noreferrer">
+      Consultar disponibilidad
+      <i data-lucide="message-circle" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <script src="../scripts/services.js"></script>
 </Layout>

@@ -1,5 +1,19 @@
 import { query } from "../config/db.js";
 
+export async function getActiveModels() {
+  const result = await query(`
+    SELECT
+      id,
+      nombre,
+      puesto,
+      foto_url
+    FROM tb_agentes_modelos
+    WHERE estado = 'activo'
+    ORDER BY nombre ASC, id ASC
+  `);
+  return result.rows;
+}
+
 export async function getServicesCatalog() {
   const result = await query(`
     SELECT
@@ -31,12 +45,18 @@ export async function getServicesCatalog() {
 export async function getActivePromotions() {
   const result = await query(
     `
-      SELECT *
+      SELECT
+        id,
+        titulo,
+        descripcion,
+        fecha_inicio,
+        fecha_fin,
+        imagen_url
       FROM tb_promociones
       WHERE estado = 'activo'
         AND fecha_inicio <= CURRENT_DATE
         AND fecha_fin >= CURRENT_DATE
-      ORDER BY fecha_inicio DESC
+      ORDER BY fecha_fin ASC, fecha_inicio DESC, id DESC
     `
   );
   return result.rows;

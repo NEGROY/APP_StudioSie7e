@@ -3,21 +3,52 @@ import Layout from "../layouts/Layout.astro";
 import { mediaUrl } from "../config/media.js";
 ---
 <Layout title="Promociones | Studio Siete" description="Promociones vigentes para sesiones y producciones de Studio Siete.">
-  <section class="page-hero" aria-labelledby="promotionsTitle">
-    <img src={mediaUrl("ejemplos/marca.jpg")} alt="Producción visual para promociones de Studio Siete" fetchpriority="high" />
+  <section class="page-hero page-hero--left promotions-hero" aria-labelledby="promotionsTitle">
+    <img src={mediaUrl("set/set-02.jpg")} alt="Escenario preparado para una sesión de Studio Siete" fetchpriority="high" />
     <div class="page-hero__shade" aria-hidden="true"></div>
     <div class="page-hero__content reveal">
-      <p class="kicker">Temporadas y experiencias especiales</p>
+      <p class="kicker">Sesiones · eventos · contenido</p>
       <h1 id="promotionsTitle">Promociones</h1>
-      <p>Propuestas disponibles por tiempo limitado para crear algo memorable.</p>
+      <p>Propuestas vigentes para reservar una producción con condiciones especiales.</p>
     </div>
   </section>
 
-  <section class="route-intro section-shell reveal">
+  <section class="promotion-overview section-shell reveal" aria-labelledby="promotionOverviewTitle">
     <p class="section-index">Agenda vigente</p>
-    <div class="route-copy">
-      <h2>El momento indicado para reservar.</h2>
-      <p>Consulta las experiencias de temporada y solicita disponibilidad directamente con el estudio.</p>
+    <div class="promotion-overview__copy">
+      <h2 id="promotionOverviewTitle">El momento indicado para producir.</h2>
+      <p>Las fechas y propuestas de esta página se actualizan desde la agenda activa de Studio Siete.</p>
+      <p class="promotion-count" id="promotionCount" aria-live="polite">Consultando promociones vigentes</p>
     </div>
   </section>
+
+  <section class="promotion-catalog-public" aria-labelledby="promotionCatalogTitle">
+    <div class="section-shell section-heading section-heading--dark reveal">
+      <div>
+        <p class="kicker kicker--blue">Disponibles ahora</p>
+        <h2 id="promotionCatalogTitle">Encuentra tu próxima sesión.</h2>
+      </div>
+      <p class="section-note">Sujeto a disponibilidad de fecha y horario.</p>
+    </div>
+
+    <div class="public-promotion-list section-shell" id="publicPromotionList" aria-live="polite" aria-busy="true">
+      <div class="public-data-state public-data-state--loading">
+        <span aria-hidden="true"></span>
+        <p>Cargando promociones...</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="promotion-contact-cta" aria-labelledby="promotionContactTitle">
+    <div class="reveal">
+      <p class="kicker">Confirma tu fecha</p>
+      <h2 id="promotionContactTitle">Consulta disponibilidad antes de que termine la promoción.</h2>
+    </div>
+    <a class="action action--gold" href="https://wa.me/50257479695" target="_blank" rel="noreferrer">
+      Escribir por WhatsApp
+      <i data-lucide="message-circle" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <script src="../scripts/promotions.js"></script>
 </Layout>

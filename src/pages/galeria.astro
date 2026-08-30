@@ -1,9 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import { GALLERY_BRAND_LOGOS, GALLERY_STAT } from "../config/gallery.js";
 import { mediaUrl } from "../config/media.js";
+import Layout from "../layouts/Layout.astro";
+
+const statTarget = typeof GALLERY_STAT.value === "number" ? GALLERY_STAT.value : "";
+const statDisplay = GALLERY_STAT.value ?? GALLERY_STAT.fallback;
 ---
 <Layout title="Galería | Studio Siete" description="Retratos, sets, eventos y contenido comercial fotografiados por Studio Siete.">
-  <section class="page-hero" aria-labelledby="galleryTitle">
+  <section class="page-hero gallery-hero" aria-labelledby="galleryTitle">
     <img src={mediaUrl("modelos/modelo-06.jpg")} alt="Retrato de la galería de Studio Siete" fetchpriority="high" />
     <div class="page-hero__shade" aria-hidden="true"></div>
     <div class="page-hero__content reveal">
@@ -13,15 +17,113 @@ import { mediaUrl } from "../config/media.js";
     </div>
   </section>
 
-  <section class="route-intro section-shell reveal" aria-label="Categorías de galería">
-    <p class="section-index">Archivo visual</p>
-    <div class="route-tags">
-      <span>Modelos</span>
-      <span>Sets</span>
-      <span>Eventos</span>
-      <span>Marcas</span>
-      <span>Productos</span>
-      <span>Sesiones</span>
+  <nav class="gallery-index" aria-label="Secciones de la galería">
+    <a href="#modelos">Modelos</a>
+    <a href="#archivo">Archivo visual</a>
+    <a href="#marcas">Marcas y campañas</a>
+    <a href="#detras-de-camara">Detrás de cámara</a>
+  </nav>
+
+  <section class="gallery-models" id="modelos" aria-labelledby="modelsTitle">
+    <div class="section-shell section-heading section-heading--dark reveal">
+      <div>
+        <p class="kicker kicker--blue">Modelos de Studio Siete</p>
+        <h2 id="modelsTitle">Rostros frente a nuestra lente.</h2>
+      </div>
+      <p class="gallery-count" id="modelCount" aria-live="polite">Consultando perfiles activos</p>
+    </div>
+
+    <div class="model-deck" id="modelDeck" aria-live="polite" aria-busy="true">
+      <div class="gallery-state gallery-state--loading">
+        <span aria-hidden="true"></span>
+        <p>Cargando selección de modelos...</p>
+      </div>
     </div>
   </section>
+
+  <section class="gallery-archive" id="archivo" aria-labelledby="archiveTitle">
+    <div class="section-shell section-heading reveal">
+      <div>
+        <p class="kicker kicker--blue">Archivo visual</p>
+        <h2 id="archiveTitle">Del estudio a cada historia.</h2>
+      </div>
+      <p class="section-note">Sets, campañas, productos, eventos y sesiones.</p>
+    </div>
+
+    <div class="gallery-mosaic section-shell">
+      <figure class="gallery-tile reveal">
+        <img src={mediaUrl("set/set-02.jpg")} alt="Set temático preparado para una sesión" loading="lazy" />
+        <figcaption><span>01</span><strong>Sets de fotografía</strong></figcaption>
+      </figure>
+      <figure class="gallery-tile reveal">
+        <img src={mediaUrl("ejemplos/marca.jpg")} alt="Producción fotográfica para una marca" loading="lazy" />
+        <figcaption><span>02</span><strong>Campañas y redes</strong></figcaption>
+      </figure>
+      <figure class="gallery-tile reveal">
+        <img src={mediaUrl("ejemplos/evento.jpg")} alt="Cobertura profesional de un evento" loading="lazy" />
+        <figcaption><span>03</span><strong>Eventos y cobertura</strong></figcaption>
+      </figure>
+      <figure class="gallery-tile reveal">
+        <img src={mediaUrl("ejemplos/producto.jpg")} alt="Fotografía comercial de producto" loading="lazy" />
+        <figcaption><span>04</span><strong>Productos</strong></figcaption>
+      </figure>
+      <figure class="gallery-tile reveal">
+        <img src={mediaUrl("ejemplos/sesion.jpg")} alt="Sesión familiar en Studio Siete" loading="lazy" />
+        <figcaption><span>05</span><strong>Sesiones</strong></figcaption>
+      </figure>
+      <figure class="gallery-tile reveal">
+        <img src={mediaUrl("modelos/modelo-11.jpg")} alt="Retrato editorial para contenido visual" loading="lazy" />
+        <figcaption><span>06</span><strong>Retrato editorial</strong></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="brand-band" id="marcas" aria-labelledby="brandsTitle">
+    <div class="brand-band__content reveal">
+      <p class="kicker">Marcas, campañas y redes</p>
+      <h2 id="brandsTitle">Imágenes que ayudan a una marca a tomar posición.</h2>
+      <p>Dirección visual, fotografía de producto y contenido pensado para comunicar con claridad.</p>
+      <div
+        class="brand-strip"
+        id="brandStrip"
+        data-brand-logos={JSON.stringify(GALLERY_BRAND_LOGOS)}
+        aria-live="polite"
+      >
+        <p class="brand-strip__empty">Archivo de clientes en actualización.</p>
+      </div>
+    </div>
+    <figure class="brand-band__visual reveal">
+      <img src={mediaUrl("ejemplos/marca.jpg")} alt="Sesión de contenido para marca" loading="lazy" />
+    </figure>
+  </section>
+
+  <section class="behind-scenes" id="detras-de-camara" aria-labelledby="behindTitle">
+    <figure class="behind-scenes__visual reveal">
+      <img src={mediaUrl("set/set-01.jpg")} alt="Preparación de un set de Studio Siete" loading="lazy" />
+      <figcaption>Preparación de set · Studio Siete</figcaption>
+    </figure>
+    <div class="behind-scenes__content reveal">
+      <p class="kicker">Detrás de cámara</p>
+      <h2 id="behindTitle">La imagen final comienza mucho antes del disparo.</h2>
+      <p>Concepto, ambientación, luz y dirección se trabajan como una sola producción.</p>
+      <div class="gallery-stat" aria-label={`${GALLERY_STAT.prefix}${statDisplay} ${GALLERY_STAT.label}`}>
+        <strong>
+          <span>{GALLERY_STAT.prefix}</span>
+          <span data-counter data-target={statTarget}>{statDisplay}</span>
+        </strong>
+        <span>{GALLERY_STAT.label}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-cta reveal" aria-labelledby="galleryCtaTitle">
+    <p class="kicker kicker--blue">Tu historia, nuestra dirección</p>
+    <h2 id="galleryCtaTitle">Construyamos una imagen que hable por ti.</h2>
+    <a class="action action--blue" href="/contacto">
+      Planificar una sesión
+      <i data-lucide="arrow-right" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <script src="../scripts/gallery.js"></script>
 </Layout>

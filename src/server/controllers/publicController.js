@@ -46,6 +46,13 @@ const fallbackPromotions = [
   }
 ];
 
+const fallbackModels = Array.from({ length: 5 }, (_, index) => ({
+  id: index + 1,
+  nombre: `modelo_${index + 1}`,
+  puesto: "Modelo",
+  foto_url: `/assets/media/modelos/modelo-0${index + 1}.jpg`
+}));
+
 function isDatabaseUnavailable(error) {
   return error?.code === "ECONNREFUSED" || error?.code === "ENOTFOUND";
 }
@@ -57,6 +64,18 @@ export async function services(req, res, next) {
   } catch (error) {
     if (isDatabaseUnavailable(error)) {
       return res.json(fallbackServices);
+    }
+    return next(error);
+  }
+}
+
+export async function models(req, res, next) {
+  try {
+    const rows = await publicModel.getActiveModels();
+    return res.json(rows);
+  } catch (error) {
+    if (isDatabaseUnavailable(error)) {
+      return res.json(fallbackModels);
     }
     return next(error);
   }
