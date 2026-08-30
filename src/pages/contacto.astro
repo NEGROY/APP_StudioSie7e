@@ -13,18 +13,103 @@ import { mediaUrl } from "../config/media.js";
     </div>
   </section>
 
-  <section class="route-intro section-shell reveal">
-    <p class="section-index">Visita el estudio</p>
-    <div class="contact-summary">
+  <section class="contact-directory" aria-labelledby="contactDirectoryTitle">
+    <div class="section-shell section-heading section-heading--dark reveal">
       <div>
-        <strong>Dirección</strong>
-        <p>6ª avenida 5-80 zona 3, Cobán, antes del puente Chiú.</p>
-        <span>Parqueo propio</span>
+        <p class="kicker kicker--blue">Canales directos</p>
+        <h2 id="contactDirectoryTitle">Hablemos de tu proyecto.</h2>
       </div>
-      <div>
-        <strong>Reservas</strong>
-        <a href="https://wa.me/50257479695" target="_blank" rel="noreferrer">WhatsApp +502 5747 9695</a>
-      </div>
+      <p class="section-note">Atención en Cobán, Alta Verapaz.</p>
+    </div>
+
+    <div class="contact-directory__grid section-shell">
+      <article class="reveal">
+        <i data-lucide="map-pin" aria-hidden="true"></i>
+        <span>Visítanos</span>
+        <h3>6ª avenida 5-80, zona 3</h3>
+        <p>Cobán, antes del puente Chiú.</p>
+      </article>
+
+      <article class="reveal">
+        <i data-lucide="message-circle" aria-hidden="true"></i>
+        <span>Reservas</span>
+        <h3>+502 5747 9695</h3>
+        <a href="https://wa.me/50257479695" target="_blank" rel="noreferrer">
+          Abrir WhatsApp
+          <i data-lucide="arrow-right" aria-hidden="true"></i>
+        </a>
+      </article>
+
+      <article class="reveal">
+        <i data-lucide="at-sign" aria-hidden="true"></i>
+        <span>Redes sociales</span>
+        <h3>@studiosie7egt</h3>
+        <div class="contact-directory__socials">
+          <a href="https://www.instagram.com/studiosie7egt/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61565059658827" target="_blank" rel="noreferrer">Facebook</a>
+        </div>
+      </article>
     </div>
   </section>
+
+  <section class="contact-location" aria-labelledby="contactLocationTitle">
+    <div class="contact-location__map">
+      <iframe
+        title="Ubicación de Studio Siete en Cobán"
+        src="https://www.google.com/maps?q=6%C2%AA%20avenida%205-80%20zona%203%2C%20Cob%C3%A1n%2C%20Alta%20Verapaz%2C%20Guatemala&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="contact-location__copy reveal">
+      <p class="kicker">Visita el estudio</p>
+      <h2 id="contactLocationTitle">Un espacio preparado para producir.</h2>
+      <p>Estamos antes del puente Chiú, en zona 3 de Cobán.</p>
+      <span><i data-lucide="car-front" aria-hidden="true"></i> Parqueo propio</span>
+      <a
+        class="action action--gold"
+        href="https://www.google.com/maps/search/?api=1&query=6%C2%AA%20avenida%205-80%20zona%203%2C%20Cob%C3%A1n%2C%20Alta%20Verapaz%2C%20Guatemala"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Ver indicaciones
+        <i data-lucide="arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="contact-message" aria-labelledby="contactMessageTitle">
+    <div class="contact-message__layout section-shell">
+      <div class="contact-message__intro reveal">
+        <p class="kicker kicker--blue">Envíanos un mensaje</p>
+        <h2 id="contactMessageTitle">Cuéntanos qué tienes en mente.</h2>
+        <p>Comparte los datos principales de tu sesión, evento o producción.</p>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <label>
+          <span>Nombre</span>
+          <input type="text" name="name" autocomplete="name" maxlength="100" required />
+        </label>
+
+        <label>
+          <span>Correo</span>
+          <input type="email" name="email" autocomplete="email" maxlength="160" required />
+        </label>
+
+        <label class="contact-form__message">
+          <span>Mensaje</span>
+          <textarea name="message" rows="6" maxlength="1000" required></textarea>
+        </label>
+
+        <button class="action action--blue" type="submit">
+          Enviar mensaje
+          <i data-lucide="send" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <script src="../scripts/contact.js"></script>
 </Layout>
