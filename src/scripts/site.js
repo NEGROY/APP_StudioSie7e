@@ -1,24 +1,18 @@
 import {
   ArrowRight,
-  AtSign,
   Camera,
   createIcons,
-  LockKeyhole,
   Menu,
   MessageCircle,
-  Share2,
   X
 } from "lucide";
 
 createIcons({
   icons: {
     ArrowRight,
-    AtSign,
     Camera,
-    LockKeyhole,
     Menu,
     MessageCircle,
-    Share2,
     X
   }
 });

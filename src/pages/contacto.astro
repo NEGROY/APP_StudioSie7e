@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { mediaUrl } from "../config/media.js";
+import SocialIcon from "../components/SocialIcon.astro";
 ---
 <Layout title="Contáctanos | Studio Siete" description="Reserva una sesión con Studio Siete en Cobán por WhatsApp o redes sociales.">
   <section class="page-hero page-hero--contact" aria-labelledby="contactTitle">
@@ -26,8 +27,8 @@ import { mediaUrl } from "../config/media.js";
       <article class="reveal">
         <i data-lucide="map-pin" aria-hidden="true"></i>
         <span>Visítanos</span>
-        <h3>6ª avenida 5-80, zona 3</h3>
-        <p>Cobán, antes del puente Chiú.</p>
+        <h3>FJ8J+2MJ, Cobán</h3>
+        <p>Guatemala.</p>
       </article>
 
       <article class="reveal">
@@ -41,12 +42,21 @@ import { mediaUrl } from "../config/media.js";
       </article>
 
       <article class="reveal">
-        <i data-lucide="at-sign" aria-hidden="true"></i>
+        <div class="contact-directory__brand-icons" aria-hidden="true">
+          <SocialIcon network="instagram" />
+          <SocialIcon network="facebook" />
+        </div>
         <span>Redes sociales</span>
         <h3>@studiosie7egt</h3>
         <div class="contact-directory__socials">
-          <a href="https://www.instagram.com/studiosie7egt/" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="https://www.facebook.com/profile.php?id=61565059658827" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/studiosie7egt/" target="_blank" rel="noreferrer">
+            <SocialIcon network="instagram" />
+            Instagram
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61565059658827" target="_blank" rel="noreferrer">
+            <SocialIcon network="facebook" />
+            Facebook
+          </a>
         </div>
       </article>
     </div>
@@ -56,7 +66,7 @@ import { mediaUrl } from "../config/media.js";
     <div class="contact-location__map">
       <iframe
         title="Ubicación de Studio Siete en Cobán"
-        src="https://www.google.com/maps?q=6%C2%AA%20avenida%205-80%20zona%203%2C%20Cob%C3%A1n%2C%20Alta%20Verapaz%2C%20Guatemala&output=embed"
+        src="https://www.google.com/maps?q=FJ8J%2B2MJ%2C%20Cob%C3%A1n%2C%20Guatemala&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen
@@ -65,11 +75,11 @@ import { mediaUrl } from "../config/media.js";
     <div class="contact-location__copy reveal">
       <p class="kicker">Visita el estudio</p>
       <h2 id="contactLocationTitle">Un espacio preparado para producir.</h2>
-      <p>Estamos antes del puente Chiú, en zona 3 de Cobán.</p>
+      <p>Encuéntranos con el plus code FJ8J+2MJ, Cobán, Guatemala.</p>
       <span><i data-lucide="car-front" aria-hidden="true"></i> Parqueo propio</span>
       <a
         class="action action--gold"
-        href="https://www.google.com/maps/search/?api=1&query=6%C2%AA%20avenida%205-80%20zona%203%2C%20Cob%C3%A1n%2C%20Alta%20Verapaz%2C%20Guatemala"
+        href="https://maps.app.goo.gl/V6DtvwkStM96n8P36"
         target="_blank"
         rel="noreferrer"
       >

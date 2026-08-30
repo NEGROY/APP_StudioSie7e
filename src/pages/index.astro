@@ -55,6 +55,17 @@ import { mediaUrl } from "../config/media.js";
     </div>
   </section>
 
+  <section class="home-announcements" id="homeAnnouncements" aria-labelledby="announcementsTitle" hidden>
+    <div class="section-shell section-heading section-heading--dark reveal">
+      <div>
+        <p class="kicker kicker--blue">Agenda del estudio</p>
+        <h2 id="announcementsTitle">Anuncios vigentes.</h2>
+      </div>
+      <p class="section-note" id="announcementCount"></p>
+    </div>
+    <div class="home-announcement-grid section-shell" id="homeAnnouncementGrid" aria-live="polite"></div>
+  </section>
+
   <section class="home-work" aria-labelledby="workTitle">
     <div class="section-shell section-heading reveal">
       <div>
@@ -94,4 +105,26 @@ import { mediaUrl } from "../config/media.js";
       <i data-lucide="arrow-right" aria-hidden="true"></i>
     </a>
   </section>
+
+  <dialog class="promotion-dialog" id="promotionDialog" aria-labelledby="promotionDialogTitle">
+    <button class="promotion-dialog__close" type="button" data-promotion-close aria-label="Cerrar promoción" title="Cerrar">
+      <i data-lucide="x" aria-hidden="true"></i>
+    </button>
+    <div class="promotion-dialog__media" id="promotionDialogMedia"></div>
+    <div class="promotion-dialog__content">
+      <p class="kicker kicker--blue">Promoción vigente</p>
+      <p class="promotion-dialog__dates" id="promotionDialogDates"></p>
+      <h2 id="promotionDialogTitle"></h2>
+      <p id="promotionDialogDescription"></p>
+      <div class="promotion-dialog__actions">
+        <a class="action action--blue" href="/promociones">
+          Ver promociones
+          <i data-lucide="arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="promotion-dialog__dismiss" type="button" data-promotion-close>Ahora no</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="../scripts/home-notices.js"></script>
 </Layout>

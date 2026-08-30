@@ -73,7 +73,6 @@ export async function getActiveAnnouncements() {
       a.fecha_inicio,
       a.fecha_fin,
       a.imagen_url,
-      a.estado,
       a.promocion_id
     FROM tb_anuncios a
     LEFT JOIN tb_estilos e ON e.id = a.estilo_id

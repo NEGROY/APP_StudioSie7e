@@ -1,3 +1,7 @@
+import { ArrowLeft, createIcons } from "lucide";
+
+createIcons({ icons: { ArrowLeft } });
+
 const form = document.querySelector("#loginForm");
 const message = document.querySelector("#loginMessage");
 
